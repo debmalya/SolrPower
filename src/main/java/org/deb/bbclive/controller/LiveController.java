@@ -1,7 +1,7 @@
 package org.deb.bbclive.controller;
 
-import org.deb.bbclive.Crawler;
 import org.deb.bbclive.context.AppContext;
+import org.deb.bbclive.crawler.Crawler;
 import org.deb.bbclive.dao.SolrDao;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.DataNode;

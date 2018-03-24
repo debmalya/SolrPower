@@ -1,4 +1,4 @@
-package org.deb.bbclive;
+package org.deb.bbclive.crawler;
 
 import org.apache.solr.client.solrj.SolrServerException;
 import org.deb.bbclive.context.AppContext;

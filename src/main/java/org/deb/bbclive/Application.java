@@ -28,7 +28,7 @@ public class Application {
     /**
      * SOLR baseURL to connect.
      */
-    @Value("${solr.baseURL:http://sg1lxped06:8983/solr}")
+    @Value("${solr.baseURL:http://localhost:8983/solr}")
     private String baseURL;
 
     /**
@@ -88,19 +88,17 @@ public class Application {
     private String ignoreValues;
 
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication();
-        ApplicationContext applicationContext = springApplication.run(Application.class,args);
-
+        ApplicationContext applicationContext = SpringApplication.run(Application.class,args);
     }
 
     @Bean
     public io.opentracing.Tracer tracer() {
         return new com.uber.jaeger.Configuration(
-                "EQX-212-CF",
+                "news-extract",
                 new com.uber.jaeger.Configuration.SamplerConfiguration(ProbabilisticSampler.TYPE, 1),
                 new com.uber.jaeger.Configuration.ReporterConfiguration(
                         true,  // logSpans
-                        "sg1lxped06",
+                        "localhost",
                         5775,
                         1000,   // flush interval in milliseconds
                         10000)  // max buffered Spans
