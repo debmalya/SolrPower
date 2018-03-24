@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tracing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!-- <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/w3.css}"
+          href="../../css/w3.css" /> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+
+</head>
+<body>
+
+<div class="w3-container w3-center">
+    <div class="w3-container w3-left">
+        <div class="w3-container w3-teal">
+            <p th:text="${title}"></p>
+        </div>
+        <div class="w3-container w3-center">
+            <table class="w3-table w3-striped">
+                <thead>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Countries</td>
+                    <td th:text="${countries}"></td>
+                </tr>
+                <tr>
+                    <td>Genres</td>
+                    <td th:text="${genres}"></td>
+                </tr>
+                <tr>
+                    <td>Director</td>
+                    <td th:text="${director}"></td>
+                </tr>
+                <tr>
+                    <td>Writers</td>
+                    <td th:text="${writers}"></td>
+                </tr>
+                <tr>
+                    <td>Poster</td>
+                    <td><img src="../../images/gtvglogo.png"
+                             th:attr="src=${poster},title=#{title},alt=#{title}"/></td>
+                </tr>
+                <tr>
+                    <td>Plot</td>
+                    <td th:text="${plot}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <footer>
+                <div class="w3-container w3-teal">
+                    Awards:
+                    <p th:text="${awards}"></p>
+                </div>
+
+            </footer>
+        </div>
+        <div class="w3-container w3-right">
+        </div>
+    </div>
+</div>
+<!-- /.container
+
+<script type="text/javascript"
+        src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:insert="~{header_template :: copy}" class="w3-container w3-teal"></div>
+</head>
+<body>
+
+<div class="w3-container w3-center">
+    <div class="w3-container w3-left">
+        <div class="w3-container w3-teal">
+            <p>Heading</p>
+        </div>
+        <div class="w3-container w3-center">
+            <table class="w3-table w3-striped">
+                <thead>
+                </thead>
+                <tbody>
+                <tr th:each="eachNews: ${newsList}">
+                    <td th:text="${eachNews}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <footer>
+                <div th:insert="~{footer :: copy}" class="w3-container w3-teal"></div>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
