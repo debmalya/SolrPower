@@ -1,24 +1,18 @@
 package org.deb.bbclive;
 
-import com.uber.jaeger.samplers.ProbabilisticSampler;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.impl.ConcurrentUpdateSolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
-import org.aspectj.weaver.AjAttribute;
-import org.deb.bbclive.Aspect.TraceCompleteableFuture;
 import org.deb.bbclive.context.AppContext;
-import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import com.uber.jaeger.samplers.ProbabilisticSampler;
 
 @SpringBootApplication
 @ComponentScan("org.deb.bbclive")
@@ -88,7 +82,7 @@ public class Application {
     private String ignoreValues;
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = SpringApplication.run(Application.class,args);
+        SpringApplication.run(Application.class,args);
     }
 
     @Bean
