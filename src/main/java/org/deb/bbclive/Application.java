@@ -14,6 +14,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.uber.jaeger.samplers.ProbabilisticSampler;
 
+import io.opentracing.Tracer;
+import io.opentracing.util.GlobalTracer;
+
 @SpringBootApplication
 @ComponentScan("org.deb.bbclive")
 @EntityScan("org.deb.bbclive.model")
@@ -87,7 +90,7 @@ public class Application {
 
     @Bean
     public io.opentracing.Tracer tracer() {
-        return new com.uber.jaeger.Configuration(
+        Tracer tracer =  new com.uber.jaeger.Configuration(
                 "news-extract",
                 new com.uber.jaeger.Configuration.SamplerConfiguration(ProbabilisticSampler.TYPE, 1),
                 new com.uber.jaeger.Configuration.ReporterConfiguration(
@@ -97,6 +100,10 @@ public class Application {
                         1000,   // flush interval in milliseconds
                         10000)  // max buffered Spans
         ).getTracer();
+        if (!GlobalTracer.isRegistered()){
+        	GlobalTracer.register(tracer);
+        }
+        return tracer;
     }
 
 

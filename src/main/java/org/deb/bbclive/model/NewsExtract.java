@@ -6,8 +6,10 @@ import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 
 public class NewsExtract {
+	@Field
+	@Id
+	String id;
     @Field
-    @Id
     String url;
     @Field
     String entity;
@@ -23,11 +25,12 @@ public class NewsExtract {
      * @param newsExtract news details
      * @param url retrieved from which URL
      */
-    public NewsExtract(String entity, String newsExtract,String url) {
+	public NewsExtract(String entity, String newsExtract,String url) {
         this.entity = entity;
         this.newsExtract = newsExtract;
         this.url = url;
         this.publicationDate=new Date();
+        this.id=url;
     }
 
     public NewsExtract() {
