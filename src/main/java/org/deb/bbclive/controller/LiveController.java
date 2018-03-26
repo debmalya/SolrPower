@@ -96,7 +96,7 @@ public class LiveController {
 		if (LOGGER.isDebugEnabled()) {
 			LOGGER.debug("Total item :" + displayableItemList.size());
 		}
-		CompletableFuture<Set<String>> crawled_content = crawler.process(linksToBeRetrieved, solrDao);
+		CompletableFuture<Set<String>> crawled_content = crawler.processMultiple(linksToBeRetrieved, solrDao);
 		if (!crawled_content.isDone()) {
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("Still crawling...");

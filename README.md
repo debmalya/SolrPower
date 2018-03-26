@@ -6,6 +6,9 @@ How to use Solr ( 7.2.1 ) for information storing and retrieval.
 * docker exec -it my_solr solr create_core -c gettingstarted
 * docker exec -it my_solr post -c gettingstarted example/exampledocs/manufacturers.xml
 
+* docker start my_solr
+* docker exec -it my_solr echo "solrpower"
+
 
 # How to create and drop collection
 * bin/solr create -c news-extract -s 2 -rf 2
@@ -17,11 +20,6 @@ How to use Solr ( 7.2.1 ) for information storing and retrieval.
 # Connection configuration
 * In application.properties you can define what type of solr connection you need.
 ** (E.g. indexBased=false , cloudBased=false )
-
-
-# How to create and drop collection in solr cloud
-* bin/solr create -c news-extract -s 2 -rf 2
-* bin/solr delete -c news-extract
 
 
 # How to run jaeger for opentracing using docker

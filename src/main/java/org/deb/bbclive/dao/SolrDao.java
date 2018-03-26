@@ -97,5 +97,23 @@ public class SolrDao {
         solrClient.optimize();
         return updateResponse;
     }
+    
+    /**
+     * This will add news extract to SOLR.
+     * Under production circumstances, documents should be indexed in larger batches, instead of one at a time.
+     *
+     * @param news     extract.
+     * @param entities related to the news.
+     * @return update response
+     */
+    public UpdateResponse addLotsOfNews(List<NewsExtract> newsList) throws IOException, SolrServerException {
+        
+
+        final UpdateResponse updateResponse = solrClient.addBeans(appContext.getCollectionName(), newsList);
+        // Indexed documents must be committed
+        solrClient.commit(appContext.getCollectionName());
+        solrClient.optimize();
+        return updateResponse;
+    }
 
 }
