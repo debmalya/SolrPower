@@ -15,8 +15,8 @@ How to use Solr ( 7.2.1 ) for information storing and retrieval.
 * docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
 
 # How to run the application
-mvn spring-boot:run
-mvn spring-boot:run -Dserver.port=<port number>
+* mvn spring-boot:run
+* mvn spring-boot:run -Dserver.port=<port number>
 
 # Solr commands
 * bin/solr start -e schemaless
