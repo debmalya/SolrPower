@@ -43,6 +43,11 @@ How to use Solr ( 7.2.1 ) for information storing and retrieval.
 ## Solr search
 * http://localhost:8983/solr/techproducts/select?q=id:SP2514N&wt=xml
 * http://localhost:8983/solr/techproducts/select?q=id:SP2514N&fl=id+name&wt=xml
+* http://localhost:8983/solr/techproducts/select?q=video&fl=name+score
+* http://localhost:8983/solr/techproducts/select?defType=dismax&q=video
+* http://localhost:8983/solr/techproducts/select?defType=dismax&q=video&fl=*,score
+* http://localhost:8983/solr/techproducts/select?defType=dismax&q=video&qf=features^20.0+text^0.3
+* 
 
 ### Solr search (Fuzzy)
 * To perform a fuzzy search, use the tilde ~ symbol at the end of a single-word term
