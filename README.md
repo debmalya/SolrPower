@@ -40,6 +40,21 @@ mvn spring-boot:run -Dserver.port=<port number>
 * curl http://localhost:8983/solr/gettingstarted/schema/similarity
 * curl http://host:8983/solr/mycollection/config -d '{"set-user-property":{"update.autoCreateFields":"false"}}'
 
-## Solr queries
+## Solr search
 * http://localhost:8983/solr/techproducts/select?q=id:SP2514N&wt=xml
 * http://localhost:8983/solr/techproducts/select?q=id:SP2514N&fl=id+name&wt=xml
+
+### Solr search (Fuzzy)
+* To perform a fuzzy search, use the tilde ~ symbol at the end of a single-word term
+* roam~  (This search will match terms like roams, foam, & foams. It will also match the word "roam" itself)
+* roam~1  (This will match terms like roams & foam - but not foams since it has an edit distance of "2").
+
+### Solr search (Proximity)
+* A proximity search looks for terms that are within a specific distance from one another. To perform a proximity search, add the tilde character ~ and a numeric value to the end of a search phrase.
+* "jakarta apache"~10
+
+### Solr search (Range)
+* popularity:[52 TO 10000] ( all documents whose popularity field has a value between 52 and 10,000, inclusive. Range queries are not limited to date fields or even numerical fields. You could also use range queries with
+non-date fields: )
+* title:{Aida TO Carmen} ( This will find all documents whose titles are between Aida and Carmen, but not including Aida and Carmen.)
+
