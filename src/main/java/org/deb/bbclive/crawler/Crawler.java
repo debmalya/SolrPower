@@ -170,7 +170,7 @@ public class Crawler {
 				}
 			} else {
 				if (LOGGER.isDebugEnabled()) {
-					LOGGER.debug("There is no news");
+					LOGGER.debug("There is no more news");
 				}
 			}
 			return uriSetToCrawl;

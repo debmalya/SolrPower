@@ -43,30 +43,28 @@ public class LiveController {
 			"Read more about that and all the other day's sporting stories", "#bbcfootball or 81111 on text",
 			"The latest global news, sport, weather and documentaries", "Stories from around the world", "Email us at",
 			"Send an SMS or MMS to", "Follow", "Run by the BBC and partners" };
-	
-	List<String> nonEntries = Arrays.asList(arr);
-	
-	private Set<String> linksToBeRetrieved = new HashSet<>();
-	
-	private List<DisplayableItem> displayableItemList;
 
-	
+	List<String> nonEntries = Arrays.asList(arr);
+
+	private Set<String> linksToBeRetrieved = new HashSet<>();
+
+	private List<DisplayableItem> displayableItemList;
 
 	@RequestMapping("/")
 	public String newsHeadLines(Model model) throws IOException {
 
-//		if (displayableItemList == null) {
-			displayableItemList = getHeadLinesWithLinks();
-//		}
+		// if (displayableItemList == null) {
+		displayableItemList = getHeadLinesWithLinks();
+		// }
 		model.addAttribute("newsList", displayableItemList);
 
-		
 		return "news_headings";
 	}
 
 	/**
 	 * 
-	 * @return list of display able item. Each display able item has text and a link to get details.
+	 * @return list of display able item. Each display able item has text and a
+	 *         link to get details.
 	 * @throws IOException
 	 */
 	private List<DisplayableItem> getHeadLinesWithLinks() throws IOException {
@@ -85,8 +83,18 @@ public class LiveController {
 					long wordCount = headLine.split("\\s").length;
 
 					if (headLine != null && headLine.length() > 0 && wordCount > 1) {
-						linksToBeRetrieved.add(link);
-						displayableItemList.add(new DisplayableItem(headLine, appContext.getBaseURL()+link));
+						boolean toBeAdded = true;
+						for (String each : appContext.getIgnoreList()) {
+							if (headLine.startsWith(each)) {
+								toBeAdded = false;
+							}
+						}
+
+						if (toBeAdded) {
+							if (linksToBeRetrieved.add(link)) {
+								displayableItemList.add(new DisplayableItem(headLine, appContext.getBaseURL() + link));
+							}
+						}
 					}
 
 				}
