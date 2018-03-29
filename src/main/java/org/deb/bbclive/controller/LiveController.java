@@ -48,7 +48,7 @@ public class LiveController {
 
 	private Set<String> linksToBeRetrieved = new HashSet<>();
 
-	private List<DisplayableItem> displayableItemList;
+	private static List<DisplayableItem> displayableItemList = new ArrayList<>();
 
 	@RequestMapping("/")
 	public String newsHeadLines(Model model) throws IOException {
@@ -68,7 +68,7 @@ public class LiveController {
 	 * @throws IOException
 	 */
 	private List<DisplayableItem> getHeadLinesWithLinks() throws IOException {
-		List<DisplayableItem> displayableItemList = new ArrayList<>();
+		
 
 		for (String eachLink : appContext.getLinks()) {
 			Document doc = Jsoup.connect(eachLink).get();
