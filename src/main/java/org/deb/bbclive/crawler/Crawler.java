@@ -114,9 +114,7 @@ public class Crawler {
 
 					if (alreadyProcessed.add(url)) {
 						totalCall++;
-						if (LOGGER.isDebugEnabled()) {
-							LOGGER.debug("Trying to process URL :" + url);
-						}
+						
 						Document doc = Jsoup.connect(url).get();
 						Elements paragraphs = doc.select("p");
 						HtmlToPlainText plainText = new HtmlToPlainText();
@@ -137,14 +135,16 @@ public class Crawler {
 						});
 
 						try {
-							newsCollection.add(new NewsExtract("", sb.toString(), url));
-							if (newsCollection.size() % 5 == 0) {
-								solrDao.addLotsOfNews(newsCollection);
-								newsCollection.clear();
-							}
-							successCall++;
-							if (LOGGER.isDebugEnabled()) {
-								LOGGER.debug("Processed URL :" + url);
+							if (sb.toString().trim().length() > 0) {
+								newsCollection.add(new NewsExtract("", sb.toString(), url));
+								if (newsCollection.size() % 5 == 0) {
+									solrDao.addLotsOfNews(newsCollection);
+									newsCollection.clear();
+								}
+								successCall++;
+								if (LOGGER.isDebugEnabled()) {
+									LOGGER.debug("Processed URL :" + url);
+								}
 							}
 						} catch (Throwable e1) {
 							LOGGER.error(
