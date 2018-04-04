@@ -145,6 +145,10 @@ public class Crawler {
 								if (LOGGER.isDebugEnabled()) {
 									LOGGER.debug("Processed URL :" + url);
 								}
+							} else {
+								if (LOGGER.isDebugEnabled()){
+									LOGGER.error(url+" do not have any content");
+								}
 							}
 						} catch (Throwable e1) {
 							LOGGER.error(
