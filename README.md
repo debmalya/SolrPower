@@ -14,9 +14,6 @@ How to use Solr ( 7.2.1 ) for information storing and retrieval.
 * bin/solr create -c news-extract -s 2 -rf 2
 * bin/solr delete -c news-extract
 
-# How to run jaeger for opentracing
-* docker run -d -p 5775:5775/udp -p 16686:16686 jaegertracing/all-in-one:latest
-
 # Connection configuration
 * In application.properties you can define what type of solr connection you need.
 ** (E.g. indexBased=false , cloudBased=false )
